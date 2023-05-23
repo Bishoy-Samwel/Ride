@@ -65,6 +65,6 @@ class BikesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bike_params
-      params.require(:bike).permit(:name, :desc, :style, :price, :image)
+      params.require(:bike).permit(:name, :desc, :style_id, :price, :image)
     end
 end
