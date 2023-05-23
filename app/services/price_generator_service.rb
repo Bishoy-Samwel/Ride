@@ -1,3 +1,5 @@
+require "net/http"
+
 class PriceGeneratorService
   def initialize(name, price)
     @name = name
@@ -7,12 +9,21 @@ class PriceGeneratorService
   def generate_price
     string = 'cat'
     if @name.match?(/#{string}/)
-      new_price = @price * length / 5
+      new_price = @price * get_length / 5
     end
     new_price
   end
 
   def get_length
-    length = 99
+    default = 99
+    uri = 'https://catfact.ninja/fact'
+    begin
+      uri = URI.parse(uri)
+      response = Net::HTTP.get_response(uri)
+      return JSON.parse(response.body)['length'] if response.code == "200"
+      return default
+    rescue
+      default
+    end
   end
 end
