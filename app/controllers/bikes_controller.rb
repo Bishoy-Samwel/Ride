@@ -1,9 +1,14 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: %i[ show edit update destroy ]
 
+  has_scope :by_name
+  has_scope :by_price_lower_than
+  has_scope :by_price_larger_than
+  has_scope :by_style
+
   # GET /bikes or /bikes.json
   def index
-    @bikes = Bike.all
+    @bikes = apply_scopes(Bike).all
   end
 
   # GET /bikes/1 or /bikes/1.json

@@ -1,0 +1,13 @@
+<div class="w-full p-5  flex justify-center mx-auto">
+  <%= form_with url: bikes_path,
+                method: :get,
+                class: "w-full flex flex-col gap-y-4" do |form| %>
+    <%= form.search_field :by_name, placeholder: "Bike name", class: "p-1 w-full border" %>
+    <%= form.search_field :by_price_lower_than, placeholder: "Price < $", class: "p-1 w-full border" %>
+    <%= form.search_field :by_price_larger_than, placeholder: "Price > $", class: "p-1 w-full border" %>
+    <%= form.select :by_style, [['None', nil]] + Style.all.pluck(:name, :id), {}, class: "p-1 w-full border" %>
+    <%#= form.collection_select :style_filter, Style.all, :name, :name, {}, {class:"p-1 w-full border"} %>
+
+    <%= form.submit :submit, class: "border p-3" %>
+  <% end %>
+</div>
