@@ -4,12 +4,25 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @bike %>
-
-    <%= link_to 'Edit this bike', edit_bike_path(@bike), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this bike', bike_path(@bike), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div id="<%= dom_id @bike %>">
+      <div class="bg-white flex p-4">
+        <div class="aspect-w-16 aspect-h-9 overflow-hidden w-full ">
+          <% if @bike.image.attached? %>
+            <%= image_tag(@bike.image, class: "object-cover") %>
+          <% end %>
+        </div>
+        <div class="p-4 flex flex-col gap-y-2 flex-grow">
+          <h2 class="text-lg text-red-900 font-bold mb-2"> <%= @bike.name %></h2>
+          <p class="text-gray-600">Style: <span class="bg-red-200 p-1.5 rounded-lg"><%= @bike.style.name %></span></p>
+          <p class="text-gray-600">Price: $<%= @bike.price %></p>
+          <p class="text-gray-600"> <%= @bike.desc %></p>
+          <% if action_name != "show" %>
+            <%= link_to "View Details", @bike,
+                        class: "self-center w-fit bg-gray-900 text-white py-2 px-4 rounded-md hover:bg-gray-100 hover:text-black" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <%= link_to 'Back to bikes', bikes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Back to bikes', bikes_path, class: "mt-5 ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
