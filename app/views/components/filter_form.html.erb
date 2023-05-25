@@ -8,6 +8,6 @@
     <%= form.select :by_style, [['None', nil]] + Style.all.pluck(:name, :id), {}, class: "p-1 w-full border" %>
     <%#= form.collection_select :style_filter, Style.all, :name, :name, {}, {class:"p-1 w-full border"} %>
 
-    <%= form.submit :submit, class: "border p-3" %>
+    <%= form.submit :Submit, class: "border border-gray-300 p-2 w-fit mx-auto rounded-xl" %>
   <% end %>
 </div>
