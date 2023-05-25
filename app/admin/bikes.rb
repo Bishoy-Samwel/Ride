@@ -24,5 +24,4 @@ ActiveAdmin.register Bike do
     end
     f.actions
   end
-
 end

@@ -1,0 +1,15 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'config/initializers/**/*'
+    - 'vendor/bundle/**/*'
+Style/Documentation:
+  Enabled: false
+Metrics:
+  Enabled: false
+require:
+  - rubocop-rspec
+  - rubocop-rails
