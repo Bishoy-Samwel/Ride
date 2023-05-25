@@ -6,10 +6,9 @@ class Bike < ApplicationRecord
   scope :by_name, ->(name_filter) { where('lower(name) LIKE ?', "%#{name_filter.downcase}%") }
   scope :by_price_larger_than, ->(price_larger_than_filter) { where('price > ?', price_larger_than_filter) }
   scope :by_price_lower_than, ->(price_lower_than_filter) { where('price < ?', price_lower_than_filter) }
-  scope :by_style, -> (style_filter) { where(style_id: style_filter) }
+  scope :by_style, ->(style_filter) { where(style_id: style_filter) }
 
   def update_price
-    self.price = PriceGeneratorService.new(self.name, self.price).generate_price
+    self.price = PriceGeneratorService.new(name, price).generate_price
   end
-
 end

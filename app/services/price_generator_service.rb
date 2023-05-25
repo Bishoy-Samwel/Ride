@@ -1,4 +1,4 @@
-require "net/http"
+require 'net/http'
 
 class PriceGeneratorService
   def initialize(name, price)
@@ -9,9 +9,7 @@ class PriceGeneratorService
   def generate_price
     string = 'cat'
     new_price = @price
-    if @name.match?(/#{string}/)
-      new_price = @price * get_length / 5
-    end
+    new_price = @price * get_length / 5 if @name.match?(/#{string}/)
     new_price
   end
 
@@ -21,9 +19,10 @@ class PriceGeneratorService
     begin
       uri = URI.parse(uri)
       response = Net::HTTP.get_response(uri)
-      return JSON.parse(response.body)['length'] if response.code == "200"
+      return JSON.parse(response.body)['length'] if response.code == '200'
+
       default
-    rescue
+    rescue StandardError
       default
     end
   end

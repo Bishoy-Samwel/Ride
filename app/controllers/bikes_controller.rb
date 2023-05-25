@@ -1,5 +1,5 @@
 class BikesController < ApplicationController
-  before_action :set_bike, only: %i[ show edit update destroy ]
+  before_action :set_bike, only: %i[show edit update destroy]
 
   has_scope :by_name
   has_scope :by_price_lower_than
@@ -12,8 +12,7 @@ class BikesController < ApplicationController
   end
 
   # GET /bikes/1 or /bikes/1.json
-  def show
-  end
+  def show; end
 
   # GET /bikes/new
   def new
@@ -21,8 +20,7 @@ class BikesController < ApplicationController
   end
 
   # GET /bikes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /bikes or /bikes.json
   def create
@@ -63,13 +61,14 @@ class BikesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bike
-      @bike = Bike.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def bike_params
-      params.require(:bike).permit(:name, :desc, :style_id, :price, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bike
+    @bike = Bike.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def bike_params
+    params.require(:bike).permit(:name, :desc, :style_id, :price, :image)
+  end
 end
