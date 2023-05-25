@@ -84,3 +84,4 @@ gem "devise", "~> 4.9"
 
 gem "has_scope", "~> 0.8.1"
 gem 'capybara'
+gem 'telegram-bot-ruby'
