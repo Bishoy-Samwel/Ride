@@ -291,6 +291,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9)
+  has_scope (~> 0.8.1)
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails

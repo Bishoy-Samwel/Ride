@@ -1,9 +1,14 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: %i[ show edit update destroy ]
 
+  has_scope :by_name
+  has_scope :by_price_lower_than
+  has_scope :by_price_larger_than
+  has_scope :by_style
+
   # GET /bikes or /bikes.json
   def index
-    @bikes = Bike.all
+    @bikes = apply_scopes(Bike).all
   end
 
   # GET /bikes/1 or /bikes/1.json
@@ -25,7 +30,7 @@ class BikesController < ApplicationController
 
     respond_to do |format|
       if @bike.save
-        format.html { redirect_to bike_url(@bike), notice: "Bike was successfully created." }
+        # format.html { redirect_to bike_url(@bike), notice: "Bike was successfully created." }
         format.json { render :show, status: :created, location: @bike }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +43,7 @@ class BikesController < ApplicationController
   def update
     respond_to do |format|
       if @bike.update(bike_params)
-        format.html { redirect_to bike_url(@bike), notice: "Bike was successfully updated." }
+        # format.html { redirect_to bike_url(@bike), notice: "Bike was successfully updated." }
         format.json { render :show, status: :ok, location: @bike }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +57,7 @@ class BikesController < ApplicationController
     @bike.destroy
 
     respond_to do |format|
-      format.html { redirect_to bikes_url, notice: "Bike was successfully destroyed." }
+      # format.html { redirect_to bikes_url, notice: "Bike was successfully destroyed." }
       format.json { head :no_content }
     end
   end

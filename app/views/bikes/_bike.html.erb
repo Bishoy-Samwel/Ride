@@ -1,34 +1,23 @@
 <div id="<%= dom_id bike %>">
-  <% if bike.image.attached? %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">image</strong>
-    <%= image_tag(bike.image,  class:"h-40 h-40") %>
-  </p>
-  <% end %>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= bike.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Desc:</strong>
-    <%= bike.desc %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Style:</strong>
-    <%= bike.style.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= bike.price %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this bike", bike, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this bike', edit_bike_path(bike), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="bg-white shadow-md rounded-md flex flex-col p-4">
+    <div class="p-4 flex justify-between items-center  flex-grow">
+      <div class="aspect-w-16 aspect-h-9 overflow-hidden w-6/12 h-36 flex justify-center items-center">
+        <% if bike.image.attached? %>
+          <%= image_tag(bike.image, class: "object-cover") %>
+        <% end %>
+      </div>
+      <div class="flex flex-col gap-y-3">
+        <h2 class="text-lg text-red-900 font-bold"> <%= bike.name %></h2>
+        <p class="text-gray-600">Style:
+          <span class="bg-red-200 p-1.5 rounded-lg">
+          <%= bike.style.name %>
+        </span></p>
+        <p class="text-gray-600">Price: $<%= bike.price %></p>
+        <% if action_name != "show" %>
+          <%= link_to "View Details", bike,
+                      class: "self-center w-fit bg-gray-900 text-white py-2 px-4 rounded-md hover:bg-gray-100 hover:text-black" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

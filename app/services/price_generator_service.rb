@@ -22,7 +22,7 @@ class PriceGeneratorService
       uri = URI.parse(uri)
       response = Net::HTTP.get_response(uri)
       return JSON.parse(response.body)['length'] if response.code == "200"
-      return default
+      default
     rescue
       default
     end
