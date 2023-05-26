@@ -8,6 +8,7 @@ class PriceGeneratorService
 
   def generate_price
     string = 'cat'
+    new_price = @price
     if @name.match?(/#{string}/)
       new_price = @price * get_length / 5
     end

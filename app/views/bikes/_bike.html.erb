@@ -1,4 +1,11 @@
 <div id="<%= dom_id bike %>">
+  <% if bike.image.attached? %>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">image</strong>
+    <%= image_tag(bike.image,  class:"h-40 h-40") %>
+  </p>
+  <% end %>
+
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= bike.name %>
@@ -11,7 +18,7 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Style:</strong>
-    <%= bike.style %>
+    <%= bike.style.name %>
   </p>
 
   <p class="my-5">
