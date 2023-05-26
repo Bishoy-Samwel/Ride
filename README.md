@@ -52,8 +52,17 @@
 
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-
-
+## Creating the bot - Having the token
+- The first step in creating our bot is to talk to the BotFather.
+- Open Telegram app
+- Type in the search form BotFather.
+- Hit the start button which will display a list of commands that we can use to interact with the BotFather.
+- Let’s create our bot using the command `/newbot`.
+- Now we have to register for a username, note: it must end in bot.
+- Command `/token` will give us an API token to access our bot through HTTPS. (We will use it later)
+ 
+ This is the username of the bot @RideBikeBot
+ 
 ## Author
 
 👤 **Bishoy Samwel Faheem**
