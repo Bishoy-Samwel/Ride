@@ -46,7 +46,9 @@
 - On the comandline, at the project's root, run `bundle i` to install app dependencies
   - `rails db:create`
   - `rails db:migrate`
+  - `rails db:seed`
   - `./bin/dev`
+  - To access admin panel `http://localhost:3000/admin/`
 - To run the test cases:
   - `rspec`
 
