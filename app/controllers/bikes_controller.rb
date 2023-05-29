@@ -1,14 +1,21 @@
+# frozen_string_literal: true
+
 class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit update destroy]
-
+  before_action :authenticate_admin_user!, except: %i[index show]
+  after_action :update_bike_visiting, only: :show
   has_scope :by_name
   has_scope :by_price_lower_than
   has_scope :by_price_larger_than
   has_scope :by_style
+  has_scope :order_by_visitings
+
 
   # GET /bikes or /bikes.json
   def index
-    @bikes = apply_scopes(Bike).all
+    # order by bike.bike_visiting.count
+    # BikeVisiting.order(id:id).count
+    @bikes = apply_scopes(Bike.order_by_visitings).all
   end
 
   # GET /bikes/1 or /bikes/1.json
@@ -61,6 +68,10 @@ class BikesController < ApplicationController
   end
 
   private
+
+  def update_bike_visiting
+    BikeVisiting.create(bike: @bike)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_bike
