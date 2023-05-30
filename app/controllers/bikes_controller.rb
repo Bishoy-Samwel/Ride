@@ -13,8 +13,6 @@ class BikesController < ApplicationController
 
   # GET /bikes or /bikes.json
   def index
-    # order by bike.bike_visiting.count
-    # BikeVisiting.order(id:id).count
     @bikes = apply_scopes(Bike.order_by_visitings).all
   end
 
