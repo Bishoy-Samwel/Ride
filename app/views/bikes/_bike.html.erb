@@ -12,6 +12,7 @@
           <span class="bg-red-200 p-1.5 rounded-lg">
           <%= bike.style.name %>
         </span></p>
+        <p class="text-gray-600">Visits: <span class="font-bold"><%= bike.bike_visitings.count %></span></p>
         <p class="text-gray-600">Price: $<%= bike.price %></p>
         <% if action_name != "show" %>
           <%= link_to "View Details", bike,
