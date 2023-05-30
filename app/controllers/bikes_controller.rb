@@ -70,6 +70,8 @@ class BikesController < ApplicationController
   private
 
   def update_bike_visiting
+    return if session[@bike.id]
+    session[@bike.id] = @bike.id
     @bike.new_visit
   end
 
