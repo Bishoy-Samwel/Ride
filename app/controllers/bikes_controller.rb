@@ -70,7 +70,7 @@ class BikesController < ApplicationController
   private
 
   def update_bike_visiting
-    BikeVisiting.create(bike: @bike)
+    @bike.new_visit
   end
 
   # Use callbacks to share common setup or constraints between actions.

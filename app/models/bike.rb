@@ -17,4 +17,8 @@ class Bike < ApplicationRecord
   def update_price
     self.price = PriceGeneratorService.new(name, price).generate_price
   end
+
+  def new_visit
+    BikeVisiting.create(bike: self)
+  end
 end
