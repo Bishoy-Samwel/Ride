@@ -13,13 +13,14 @@
 ## About Project
 
 > Online bicycle store, with a Telegram bot.
+![image](https://github.com/Bishoy-Samwel/Ride/assets/29541335/b2030261-b2b4-4422-9b1a-d5495cf9283f)
 
 ## Functionality Requirements
 
 - **Admin:** 
   - CRUD(Bikes), ☑️
   - login/logout(Admin portal), ☑️
-  - Conditionally price generation while creartion. ☑️
+  - Conditionally price generation while creation. ☑️
 - **User:** 
   - Browse bikes, ☑️
   - Search bikes by filter combination of name, style, price, ☑️
